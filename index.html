@@ -1,1 +1,134 @@
 
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>העולם הפרטי שלי</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#111116;color:#f5f1f5;font-family:Arial,sans-serif}
+header{padding:25px 20px;background:#1d1b24;border-bottom:1px solid #393340}
+h1{font-size:25px;margin:0 0 8px}
+header p{color:#aaa3b2;margin:0;font-size:14px}
+main{padding:20px;max-width:650px;margin:auto}
+.card{background:#201e27;border:1px solid #393541;border-radius:17px;padding:19px;margin-bottom:17px}
+h2{font-size:19px;margin:0 0 12px}
+p{line-height:1.6;color:#c7c0cd}
+button{background:#b58acb;color:#17121b;border:0;border-radius:11px;padding:13px 18px;font-size:15px;font-weight:bold;width:100%;margin-top:10px}
+input,select{width:100%;padding:12px;margin:7px 0 14px;border-radius:9px;border:1px solid #51485b;background:#15131a;color:white;font-size:15px}
+label{display:block;color:#d8cddd;font-size:14px}
+.hidden{display:none}
+.back{background:#393341;color:white}
+.small{font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<header>
+<h1>העולם הפרטי שלי</h1>
+<p>מרחב אישי לדמות, לשיחות ולאתגרים שלך</p>
+</header>
+
+<main>
+<section id="home">
+<div class="card">
+<h2>ברוך הבא</h2>
+<p>כאן תוכל ליצור דמות נשית וירטואלית משלך, לעצב את המראה שלה ובהמשך להגדיר את האישיות והאופי שלה.</p>
+<button onclick="show('creator')">יצירת הדמות שלי</button>
+</div>
+<div class="card">
+<h2>הדמות שלי</h2>
+<p id="saved">עדיין לא יצרת דמות.</p>
+<button class="back" onclick="show('creator')">עריכת הדמות</button>
+</div>
+<div class="card">
+<h2>השלבים הבאים</h2>
+<p>אחרי יצירת הדמות נוסיף שיחות, זיכרון אישי, העדפות, אתגרים והודעות יזומות.</p>
+</div>
+</section>
+
+<section id="creator" class="hidden">
+<div class="card">
+<h2>יצירת דמות נשית</h2>
+<p>בחר את המראה שלה. אפשר לשנות את הבחירות בכל שלב.</p>
+
+<label>שם הדמות</label>
+<input id="name" placeholder="איך תרצה לקרוא לה?">
+
+<label>גיל הדמות (בגירה בלבד)</label>
+<select id="age">
+<option>25</option><option>28</option><option>30</option><option>35</option><option>40</option>
+</select>
+
+<label>גוון עור</label>
+<select id="skin">
+<option>בהיר</option><option>בהיר-זית</option><option>זית</option><option>שזוף</option><option>כהה</option>
+</select>
+
+<label>צבע עיניים</label>
+<select id="eyes">
+<option>חום</option><option>כחול</option><option>ירוק</option><option>דבש</option><option>אפור</option>
+</select>
+
+<label>צבע שיער</label>
+<select id="hair">
+<option>שחור</option><option>חום</option><option>בלונדיני</option><option>אדמוני</option><option>חום בהיר</option>
+</select>
+
+<label>סגנון שיער</label>
+<select id="style">
+<option>ארוך וחלק</option><option>ארוך וגלי</option><option>מתולתל</option><option>קצר</option><option>אסוף</option>
+</select>
+
+<label>מבנה גוף</label>
+<select id="body">
+<option>רזה</option><option>ממוצע</option><option>מלא</option><option>אתלטי</option>
+</select>
+
+<label>גובה</label>
+<select id="height">
+<option>נמוכה</option><option>ממוצעת</option><option>גבוהה</option>
+</select>
+
+<label>מבנה חזה</label>
+<select id="chest">
+<option>קטן</option><option>בינוני</option><option>גדול</option>
+</select>
+
+<label>מבנה ירכיים וישבן</label>
+<select id="hips">
+<option>צר</option><option>בינוני</option><option>רחב</option>
+</select>
+
+<label>סגנון לבוש</label>
+<select id="clothes">
+<option>אלגנטי ויוקרתי</option><option>עסקי</option><option>יומיומי</option><option>נועז ואופנתי</option>
+</select>
+
+<button onclick="saveCharacter()">שמירת הדמות</button>
+<button class="back" onclick="show('home')">חזרה למסך הראשי</button>
+</div>
+</section>
+</main>
+
+<script>
+function show(id){
+document.getElementById('home').classList.add('hidden');
+document.getElementById('creator').classList.add('hidden');
+document.getElementById(id).classList.remove('hidden');
+}
+function saveCharacter(){
+const name=document.getElementById('name').value.trim();
+if(!name){alert('צריך לבחור שם לדמות');return;}
+const fields=['age','skin','eyes','hair','style','body','height','chest','hips','clothes'];
+let data={name:name};
+fields.forEach(id=>data[id]=document.getElementById(id).value);
+localStorage.setItem('myCharacter',JSON.stringify(data));
+document.getElementById('saved').textContent='הדמות שלך: '+name;
+alert('הדמות נשמרה בהצלחה!');
+show('home');
+}
+</script>
+</body>
+</html>
+
