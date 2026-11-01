@@ -3,132 +3,153 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>העולם הפרטי שלי</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>יוצרת הדמות שלי</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#111116;color:#f5f1f5;font-family:Arial,sans-serif}
-header{padding:25px 20px;background:#1d1b24;border-bottom:1px solid #393340}
-h1{font-size:25px;margin:0 0 8px}
-header p{color:#aaa3b2;margin:0;font-size:14px}
-main{padding:20px;max-width:650px;margin:auto}
-.card{background:#201e27;border:1px solid #393541;border-radius:17px;padding:19px;margin-bottom:17px}
-h2{font-size:19px;margin:0 0 12px}
-p{line-height:1.6;color:#c7c0cd}
-button{background:#b58acb;color:#17121b;border:0;border-radius:11px;padding:13px 18px;font-size:15px;font-weight:bold;width:100%;margin-top:10px}
-input,select{width:100%;padding:12px;margin:7px 0 14px;border-radius:9px;border:1px solid #51485b;background:#15131a;color:white;font-size:15px}
-label{display:block;color:#d8cddd;font-size:14px}
-.hidden{display:none}
-.back{background:#393341;color:white}
-.small{font-size:12px;color:#aaa}
+body{margin:0;background:#17141b;color:#fff;font-family:Arial,sans-serif}
+header{padding:18px;text-align:center;background:#28212c;border-bottom:1px solid #554052}
+header h1{margin:0;color:#f5a5d0;font-size:25px}
+header p{margin:7px 0 0;color:#d4c5d2;font-size:13px}
+main{max-width:1100px;margin:auto;padding:14px}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{background:#28232e;border:1px solid #514253;border-radius:16px;padding:15px;margin-bottom:14px}
+h2{font-size:18px;margin:0 0 12px;color:#f5b5d8}
+h3{font-size:15px;margin:15px 0 8px}
+.avatar{width:100%;height:390px;object-fit:cover;object-position:center 25%;border-radius:13px;background:#453642}
+.note{font-size:12px;color:#c9b8c8;line-height:1.5}
+button{border:1px solid #74536d;background:#3b3040;color:white;padding:10px;border-radius:10px;font-size:14px;cursor:pointer}
+button.selected{background:#d84c9b;border-color:#ffb2dd;color:white}
+.options{display:flex;flex-wrap:wrap;gap:7px}
+.options button{flex:1 1 30%}
+.wide{width:100%;margin-top:10px;background:#d84c9b;color:white;border:0;font-weight:bold;padding:13px}
+select,input{width:100%;padding:11px;border-radius:9px;background:#18151d;color:white;border:1px solid #665267;margin:6px 0 12px}
+label{font-size:13px;color:#e5d4e2}
+#status{color:#a8e5b3;font-size:13px;min-height:20px}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.avatar{height:430px}}
 </style>
 </head>
 <body>
 <header>
-<h1>העולם הפרטי שלי</h1>
-<p>מרחב אישי לדמות, לשיחות ולאתגרים שלך</p>
+<h1>My Dream Girl</h1>
+<p>יוצרת הדמות האישית שלך</p>
 </header>
-
 <main>
-<section id="home">
-<div class="card">
-<h2>ברוך הבא</h2>
-<p>כאן תוכל ליצור דמות נשית וירטואלית משלך, לעצב את המראה שלה ובהמשך להגדיר את האישיות והאופי שלה.</p>
-<button onclick="show('creator')">יצירת הדמות שלי</button>
+<div class="layout">
+<section>
+<div class="panel">
+<h2>תצוגת הדמות</h2>
+<img class="avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900" alt="תצוגת דמות נשית">
+<p id="preview" class="note">בחר אפשרויות כדי לבנות את המראה שלה.</p>
+<p class="note">תמונת הבסיס היא להמחשה. הבחירות כרגע נשמרות בפרופיל ואינן משנות את התמונה עצמה.</p>
 </div>
-<div class="card">
-<h2>הדמות שלי</h2>
-<p id="saved">עדיין לא יצרת דמות.</p>
-<button class="back" onclick="show('creator')">עריכת הדמות</button>
-</div>
-<div class="card">
-<h2>השלבים הבאים</h2>
-<p>אחרי יצירת הדמות נוסיף שיחות, זיכרון אישי, העדפות, אתגרים והודעות יזומות.</p>
-</div>
-</section>
-
-<section id="creator" class="hidden">
-<div class="card">
-<h2>יצירת דמות נשית</h2>
-<p>בחר את המראה שלה. אפשר לשנות את הבחירות בכל שלב.</p>
-
+<div class="panel">
+<h2>פרטי הדמות</h2>
 <label>שם הדמות</label>
-<input id="name" placeholder="איך תרצה לקרוא לה?">
-
-<label>גיל הדמות (בגירה בלבד)</label>
-<select id="age">
-<option>25</option><option>28</option><option>30</option><option>35</option><option>40</option>
-</select>
-
-<label>גוון עור</label>
-<select id="skin">
-<option>בהיר</option><option>בהיר-זית</option><option>זית</option><option>שזוף</option><option>כהה</option>
-</select>
-
-<label>צבע עיניים</label>
-<select id="eyes">
-<option>חום</option><option>כחול</option><option>ירוק</option><option>דבש</option><option>אפור</option>
-</select>
-
-<label>צבע שיער</label>
-<select id="hair">
-<option>שחור</option><option>חום</option><option>בלונדיני</option><option>אדמוני</option><option>חום בהיר</option>
-</select>
-
-<label>סגנון שיער</label>
-<select id="style">
-<option>ארוך וחלק</option><option>ארוך וגלי</option><option>מתולתל</option><option>קצר</option><option>אסוף</option>
-</select>
-
-<label>מבנה גוף</label>
-<select id="body">
-<option>רזה</option><option>ממוצע</option><option>מלא</option><option>אתלטי</option>
-</select>
-
-<label>גובה</label>
-<select id="height">
-<option>נמוכה</option><option>ממוצעת</option><option>גבוהה</option>
-</select>
-
-<label>מבנה חזה</label>
-<select id="chest">
-<option>קטן</option><option>בינוני</option><option>גדול</option>
-</select>
-
-<label>מבנה ירכיים וישבן</label>
-<select id="hips">
-<option>צר</option><option>בינוני</option><option>רחב</option>
-</select>
-
-<label>סגנון לבוש</label>
-<select id="clothes">
-<option>אלגנטי ויוקרתי</option><option>עסקי</option><option>יומיומי</option><option>נועז ואופנתי</option>
-</select>
-
-<button onclick="saveCharacter()">שמירת הדמות</button>
-<button class="back" onclick="show('home')">חזרה למסך הראשי</button>
+<input id="name" placeholder="הכנס שם">
+<label>גיל (דמות בוגרת)</label>
+<select id="age"><option>25</option><option>28</option><option>30</option><option>35</option><option>40</option></select>
 </div>
 </section>
+
+<section>
+<div class="panel">
+<h2>עיצוב המראה</h2>
+<h3>תסרוקת</h3>
+<div class="options" id="hair">
+<button>ארוך וחלק</button><button>ארוך וגלי</button><button>מתולתל</button><button>קצר</button><button>אסוף</button><button>קארה</button>
+</div>
+<h3>צבע שיער</h3>
+<div class="options" id="hairColor">
+<button>שחור</button><button>חום</button><button>בלונדיני</button><button>אדמוני</button><button>חום בהיר</button>
+</div>
+<h3>צבע עיניים</h3>
+<div class="options" id="eyes">
+<button>חום</button><button>כחול</button><button>ירוק</button><button>דבש</button><button>אפור</button>
+</div>
+<h3>גוון עור</h3>
+<div class="options" id="skin">
+<button>בהיר</button><button>זית</button><button>שזוף</button><button>כהה</button>
+</div>
+<h3>מבנה גוף</h3>
+<div class="options" id="body">
+<button>רזה</button><button>ממוצע</button><button>אתלטי</button><button>מלא</button>
+</div>
+</div>
+
+<div class="panel">
+<h2>ארון הבגדים</h2>
+<p class="note">בחר קטגוריה ואז פריט. בהמשך נוסיף תמונות של הפריטים עצמם.</p>
+<div class="options" id="categories">
+<button class="selected">אלגנטי</button>
+<button>דומיננטי</button>
+<button>לטקס</button>
+<button>אוברסייז</button>
+<button>יומיומי</button>
+<button>ביתי</button>
+<button>שמלות</button>
+<button>חליפות</button>
+<button>הלבשה תחתונה</button>
+</div>
+<h3>בחירת פריט</h3>
+<div class="options" id="clothes">
+<button>שמלה שחורה</button><button>חליפה מחויטת</button><button>חצאית</button><button>חולצה רחבה</button><button>ג'ינס</button><button>חלוק</button>
+</div>
+<h3>אביזרים</h3>
+<div class="options" id="accessories">
+<button>עגילים</button><button>שרשרת</button><button>משקפיים</button><button>עקבים</button><button>מגפיים</button><button>תיק</button>
+</div>
+<button class="wide" onclick="save()">שמירת הדמות והבחירות</button>
+<button class="wide" style="background:#514253" onclick="load()">טעינת הדמות השמורה</button>
+<p id="status"></p>
+</div>
+</section>
+</div>
 </main>
 
 <script>
-function show(id){
-document.getElementById('home').classList.add('hidden');
-document.getElementById('creator').classList.add('hidden');
-document.getElementById(id).classList.remove('hidden');
+const choices={};
+function setup(id,key){
+document.querySelectorAll('#'+id+' button').forEach(btn=>{
+btn.addEventListener('click',()=>{
+document.querySelectorAll('#'+id+' button').forEach(b=>b.classList.remove('selected'));
+btn.classList.add('selected');
+choices[key]=btn.textContent;
+updatePreview();
+});
+});
 }
-function saveCharacter(){
-const name=document.getElementById('name').value.trim();
-if(!name){alert('צריך לבחור שם לדמות');return;}
-const fields=['age','skin','eyes','hair','style','body','height','chest','hips','clothes'];
-let data={name:name};
-fields.forEach(id=>data[id]=document.getElementById(id).value);
-localStorage.setItem('myCharacter',JSON.stringify(data));
-document.getElementById('saved').textContent='הדמות שלך: '+name;
-alert('הדמות נשמרה בהצלחה!');
-show('home');
+setup('hair','תסרוקת');
+setup('hairColor','צבע שיער');
+setup('eyes','צבע עיניים');
+setup('skin','גוון עור');
+setup('body','מבנה גוף');
+setup('categories','קטגוריית לבוש');
+setup('clothes','פריט לבוש');
+setup('accessories','אביזר');
+
+function updatePreview(){
+document.getElementById('preview').textContent=
+Object.entries(choices).map(([k,v])=>k+': '+v).join(' | ');
+}
+function save(){
+const data={name:document.getElementById('name').value,age:document.getElementById('age').value,choices};
+localStorage.setItem('characterProfile',JSON.stringify(data));
+document.getElementById('status').textContent='הדמות והבחירות נשמרו בטלפון!';
+}
+function load(){
+const raw=localStorage.getItem('characterProfile');
+if(!raw){document.getElementById('status').textContent='עדיין אין דמות שמורה.';return;}
+const data=JSON.parse(raw);
+document.getElementById('name').value=data.name||'';
+document.getElementById('age').value=data.age||'25';
+Object.assign(choices,data.choices||{});
+document.querySelectorAll('.options button').forEach(b=>{
+b.classList.toggle('selected',Object.values(choices).includes(b.textContent));
+});
+updatePreview();
+document.getElementById('status').textContent='הדמות השמורה נטענה!';
 }
 </script>
 </body>
 </html>
-
